@@ -24,16 +24,5 @@
             app:shapeAppearanceOverlay="@style/circleImageView"
             app:strokeColor="@android:color/darker_gray"
             app:strokeWidth="1dp"/>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:contentDescription="Here"
-            android:layout_margin="16dp" />
     </RelativeLayout>
-
-
-
 </com.google.android.material.card.MaterialCardView>
