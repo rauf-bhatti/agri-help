@@ -13,7 +13,16 @@
         android:theme="@style/Theme.Agrihelp"
         tools:targetApi="31">
         <activity
-            android:name=".PlantationManagement"
+            android:name=".ui.plantation_management.AddPlantationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_plantation"
+            android:theme="@style/Theme.Agrihelp.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.plantation_management.PlantationManagement"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
-    android:layout_width="wrap_content">
+    android:layout_width="wrap_content"
+    tools:context=".ui.plantation_management.AddPlantationActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -139,7 +140,7 @@
                     android:inputType="number" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btn_dateSown"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -151,7 +152,7 @@
                     android:text="GET" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btn_plantationLocation"
                     android:layout_width="85dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -167,7 +168,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btn_addPlantation"
             android:layout_width="155dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
