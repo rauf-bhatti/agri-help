@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="-50dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/MyCardView"
+        android:layout_width="380dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="109dp"
+        android:backgroundTint="@color/white"
+        android:foregroundGravity="center_horizontal"
+        app:cardCornerRadius="20dp">
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/MyCardView"
+        android:layout_width="376dp"
+        android:layout_height="204dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/white"
+        android:foregroundGravity="center_horizontal"
+        app:cardCornerRadius="20dp">
+
+        <TextView
+            android:layout_width="306dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="ADD IMAGE FOR IDENTIFICATION"
+            android:textColor="@color/cardview_shadow_start_color"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="165dp"
+            android:layout_marginTop="90dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_input_add" />
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>
