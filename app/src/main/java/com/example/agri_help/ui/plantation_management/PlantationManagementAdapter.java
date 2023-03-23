@@ -97,5 +97,4 @@ public class PlantationManagementAdapter extends RecyclerView.Adapter<Plantation
     public int getItemCount() {
         return plantations.size();
     }
-
 }
