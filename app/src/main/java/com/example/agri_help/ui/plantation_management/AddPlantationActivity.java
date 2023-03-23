@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.agri_help.R;
+import com.example.agri_help.controllers.PlantationController;
 import com.example.agri_help.models.Plantation;
+import com.example.agri_help.models.SignedInUser;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +25,7 @@ public class AddPlantationActivity extends AppCompatActivity {
     Button btn_addSowingDate;
     Button btn_addLocation;
     final Calendar calendar = Calendar.getInstance();
+    private PlantationController controller;
 
 
     @Override
@@ -60,13 +64,17 @@ public class AddPlantationActivity extends AppCompatActivity {
                 }
 
                 String datePlanted = (String) btn_addSowingDate.getText(); // Get the text e.g. the date.
+                EditText txt_plantationArea = findViewById(R.id.txt_plantationArea);
+                int area = Integer.parseInt(String.valueOf(txt_plantationArea.getText()));
 
-                Plantation newPlantation = new Plantation(10, "AAA", "LOL");
-                if (newPlantation.AddPlantation()) {
-                    Toast.makeText(v.getContext(), "Plantation added!", Toast.LENGTH_LONG).show();
+                controller = new PlantationController();
+                Plantation newPlantation = new Plantation(area, datePlanted, SignedInUser.username);
+
+                if (!controller.AddPlantation(newPlantation, SignedInUser.username)) {
+                    Toast.makeText(v.getContext(), "Added!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(v.getContext(), "Error adding plantation", Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), "Error inserting new plantation!", Toast.LENGTH_LONG).show();
                 }
             }
         });

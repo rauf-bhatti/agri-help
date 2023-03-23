@@ -12,11 +12,22 @@ public class PlantationDAO implements IPlantationDAO{
     private final CloudDAL mCloudDAL = new CloudDAL();
 
     @Override
-    public List<Plantation> getPlantations(String username) {
+    public ArrayList<Plantation> getPlantations(String username) {
         ArrayList<Plantation> plantations = new ArrayList<>();
 
         try {
-            ResultSet resultSet = mCloudDAL.get("SELECT * FROM Plantation WHERE registered_owner = '" + username + "'");
+            ResultSet resultSet = mCloudDAL.get("SELECT * FROM Plantation WHERE registered_user = '" + username + "'");
+
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    plantations.add(new Plantation
+                            (resultSet.getString(1), resultSet.getInt(2), resultSet.getString(3),
+                                    resultSet.getString(4), resultSet.getString(5)
+                            ));
+                }
+
+                return plantations;
+            }
         }
         catch (Exception exception) {
             return null;
@@ -29,10 +40,15 @@ public class PlantationDAO implements IPlantationDAO{
     public boolean insertPlantation(Plantation plantation) {
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put("registered_user", plantation.GetArea());
+        // Search for total number and then create new ID.
+
+
+        contentValues.put("p_id", plantation.GetPlantationID());
+        contentValues.put("registered_user", plantation.GetRegisteredUser());
         contentValues.put("area", plantation.GetArea());
         contentValues.put("sown_date", plantation.GetSownDate());
+        contentValues.put("plantation_status", plantation.GetPlantationStatus());
 
-        return mCloudDAL.insert(contentValues, "Plantations");
+        return mCloudDAL.insert(contentValues, "Plantation");
     }
 }
