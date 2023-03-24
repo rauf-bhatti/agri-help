@@ -1,13 +1,9 @@
 package com.example.agri_help.ui.plantation_management;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,12 +14,9 @@ import com.example.agri_help.MonitorPlantation;
 import com.example.agri_help.R;
 import com.example.agri_help.controllers.PlantationController;
 import com.example.agri_help.models.Plantation;
-import com.example.agri_help.models.SignedInUser;
+import com.example.agri_help.models.RuntimeInfo;
 import com.google.android.material.card.MaterialCardView;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PlantationManagementAdapter extends RecyclerView.Adapter<PlantationManagementAdapter.PlantationViewHolder> {
@@ -38,7 +31,7 @@ public class PlantationManagementAdapter extends RecyclerView.Adapter<Plantation
 
     public PlantationManagementAdapter () {
         plantationController = new PlantationController();
-        plantations = plantationController.GetPlantations(SignedInUser.username);
+        plantations = plantationController.GetPlantations(RuntimeInfo.username);
     }
 
     public class PlantationViewHolder extends RecyclerView.ViewHolder{
@@ -74,6 +67,8 @@ public class PlantationManagementAdapter extends RecyclerView.Adapter<Plantation
                 @Override
                 public void onClick(View view) {
                     Plantation ticketInstance = PlantationManagementAdapter.plantations.get(getAdapterPosition());
+                    RuntimeInfo.plantationID = ticketInstance.GetPlantationID();
+
                     Intent intent = new Intent(view.getContext(), MonitorPlantation.class);
                     view.getContext().startActivity(intent);
                 }

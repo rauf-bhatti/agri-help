@@ -46,20 +46,17 @@ public class DetectionController {
         }
     }
 
-    public String startDetectionLifecycle(File image) throws IOException {
+    public void startDetectionLifecycle(File image) throws IOException {
         String response = sendToModel(image);
         if (!response.isEmpty()) {
             try {
                 JSONObject jsonObject = new JSONObject(response);
 
-
-                return jsonObject.getJSONObject("prediction").getString("predicted_label");
+                DiseaseTestController diseaseTestController = new DiseaseTestController();
+                diseaseTestController.recordDiseaseTestResult(jsonObject.getJSONObject("prediction").getString("predicted_label"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
-        return "Error";
-        // Parse the response here!
     }
 }

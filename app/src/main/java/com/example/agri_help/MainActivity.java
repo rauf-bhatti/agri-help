@@ -5,27 +5,20 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.agri_help.controllers.DetectionController;
 import com.example.agri_help.controllers.LoginController;
-import com.example.agri_help.models.SignedInUser;
-import com.example.agri_help.ui.plantation_management.AddPlantationActivity;
+import com.example.agri_help.models.RuntimeInfo;
 import com.example.agri_help.ui.plantation_management.PlantationManagement;
 
 import java.io.File;
@@ -46,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PlantationManagement.class);
                 if (LoginController.CheckCredentials("rauf", "rauf")) {
-                    SignedInUser.username = "rauf";
+                    RuntimeInfo.username = "rauf";
                     startActivity(intent);
                 }
                 else {

@@ -9,12 +9,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.agri_help.databinding.FragmentDashboardBinding;
+import com.example.agri_help.models.Disease;
+import com.example.agri_help.models.DiseaseTest;
+import com.example.agri_help.models.Plantation;
+import com.example.agri_help.ui.plantation_management.PlantationManagementAdapter;
+
+import java.util.ArrayList;
 
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
+    public DiseaseTestAdapter mAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -23,6 +32,15 @@ public class DashboardFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        RecyclerView recyclerView = binding.recyclerViewHistory;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mAdapter = new DiseaseTestAdapter();
+
+        recyclerView.setAdapter(mAdapter);
+
 
         // final TextView textView = binding.textDashboard;
         // dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
