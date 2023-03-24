@@ -7,6 +7,7 @@
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     app:cardCornerRadius="50dp"
+    android:id="@+id/itemv"
     style="@style/MyCardView">
 
     <RelativeLayout
@@ -14,6 +15,8 @@
         android:layout_width="match_parent">
 
         <com.google.android.material.imageview.ShapeableImageView
+
+            android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="10dp"
@@ -24,5 +27,45 @@
             app:shapeAppearanceOverlay="@style/circleImageView"
             app:strokeColor="@android:color/darker_gray"
             app:strokeWidth="1dp"/>
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_toRightOf="@+id/image"
+            android:layout_centerVertical="true"
+            android:text="Plantation ID"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/sown_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_toRightOf="@+id/text_view"
+            android:layout_centerVertical="true"
+            android:text="Sown Date"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_toRightOf="@+id/sown_date"
+            android:layout_centerVertical="true"
+            android:text="Status"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/Growth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_toRightOf="@+id/stat"
+            android:layout_centerVertical="true"
+            android:text="Growth Stage"
+            android:layout_marginLeft="20dp"/>
+
+
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

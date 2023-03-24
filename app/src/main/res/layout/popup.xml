@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#D6D6D6">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10sp"
+        android:background="@drawable/card"
+        android:padding="15dp"
+        android:radius="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#000000"
+            android:text="How to increase Cotton Yield?"
+
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="#000000"
+            android:text="Increasing cotton yield can be achieved by implementing the following practices:
+Proper selection of seed varieties: Choose high-yielding seed varieties that are suitable for the local climate and soil conditions.
+Soil preparation: Ensure that the soil is properly prepared before planting. This can be done by plowing, harrowing, and levelling the field to create a suitable seedbed.
+Planting density: Optimize planting density by planting the seeds at the recommended distance and depth.
+Fertilization: Provide adequate nutrients to the plants by applying the right type and amount of fertilizers at the right time.
+"
+            android:textSize="10sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp">
+
+            <TextView
+                android:id="@+id/Skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@drawable/btnbg"
+                android:text="Skip" />
+
+            <Button
+                android:id="@+id/Next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@drawable/btnbg"
+                android:layout_alignParentEnd="true"
+                android:text="Got it" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
