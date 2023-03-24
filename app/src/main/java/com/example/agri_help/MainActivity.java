@@ -11,15 +11,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.agri_help.controllers.DetectionController;
-import com.example.agri_help.controllers.LoginController;
-import com.example.agri_help.models.RuntimeInfo;
-import com.example.agri_help.ui.plantation_management.PlantationManagement;
+import com.example.agri_help.ui.login.LoginActivity;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,28 +26,36 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private int progress = 0;
-
+    TextView welcomeTxt;
+    Button getStartedBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button btn = (Button)findViewById(R.id.btn_redirect);
-        btn.setOnClickListener(new View.OnClickListener() {
+        getStartedBtn = findViewById(R.id.btnGetStarted);
+        getStartedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PlantationManagement.class);
-                if (LoginController.CheckCredentials("rauf", "rauf")) {
-                    RuntimeInfo.username = "rauf";
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(v.getContext(), "Wrong credentials!", Toast.LENGTH_LONG).show();
-                }
-
-               // pickImageFromGallery();
+                Intent intent = new Intent(v.getContext(), LoginActivity.class);
+                v.getContext().startActivity(intent);
             }
         });
+        welcomeTxt  = findViewById(R.id.welcomeTxt);
+        String welcomeMsg = "Grow \n" +
+                "your farming business..\n" +
+                "earn more.. by utilising less ";
+        int delayCounter = 300;
+        welcomeTxt.setText("");
+        for (int i=0; i<welcomeMsg.length(); i++) {
+            final char x = welcomeMsg.charAt(i);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    welcomeTxt.append(String.valueOf(x));
+                }
+            }, delayCounter);
+            delayCounter += 100;
+        }
     }
 
     private ActivityResultLauncher<Intent> pickImageLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
