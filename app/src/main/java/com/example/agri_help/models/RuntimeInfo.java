@@ -1,5 +1,6 @@
 package com.example.agri_help.models;
 
-public class SignedInUser {
+public class RuntimeInfo {
     public static String username;
+    public static String plantationID;
 }

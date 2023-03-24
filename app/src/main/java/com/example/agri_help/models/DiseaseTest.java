@@ -5,7 +5,7 @@ public class DiseaseTest {
     private String result;
     private String plantationID;
 
-    public DiseaseTest(int diseaseTestID, String result, String plantationID) {
+    public DiseaseTest(int diseaseTestID, String plantationID, String result) {
         this.diseaseTestID = diseaseTestID;
         this.result = result;
         this.plantationID = plantationID;
@@ -13,6 +13,14 @@ public class DiseaseTest {
 
     public DiseaseTest (String plantationID, String result) {
         this.result = result;
+        this.plantationID = plantationID;
+    }
+
+    public String getPlantationID() {
+        return plantationID;
+    }
+
+    public void setPlantationID(String plantationID) {
         this.plantationID = plantationID;
     }
 

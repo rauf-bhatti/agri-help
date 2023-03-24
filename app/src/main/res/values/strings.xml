@@ -13,6 +13,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="bacterial">The use of resistant cotton varieties is the most effective method of controlling the disease; cultural practices such as plowing crop residue into soil after harvest can also limit disease emergence</string>
+    <string name="fungal">Use the authentic, disease-free seed. Fumigating the soil may reduce disease incidence.</string>
+    <string name="curl">The use of resistant cotton varieties is the most effective method of controlling the disease; cultural practices such as plowing crop residue into soil after harvest can also limit disease emergence.</string>
     <string name="register_message">Not registered? Register now</string>
     <string name="get_started">Get Started   >></string>
     <string name="logo_description">Redefining agriculture..</string>

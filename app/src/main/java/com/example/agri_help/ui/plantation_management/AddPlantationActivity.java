@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.agri_help.R;
 import com.example.agri_help.controllers.PlantationController;
 import com.example.agri_help.models.Plantation;
-import com.example.agri_help.models.SignedInUser;
+import com.example.agri_help.models.RuntimeInfo;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -68,9 +68,9 @@ public class AddPlantationActivity extends AppCompatActivity {
                 int area = Integer.parseInt(String.valueOf(txt_plantationArea.getText()));
 
                 controller = new PlantationController();
-                Plantation newPlantation = new Plantation(area, datePlanted, SignedInUser.username);
+                Plantation newPlantation = new Plantation(area, datePlanted, RuntimeInfo.username);
 
-                if (!controller.AddPlantation(newPlantation, SignedInUser.username)) {
+                if (!controller.AddPlantation(newPlantation, RuntimeInfo.username)) {
                     Toast.makeText(v.getContext(), "Added!", Toast.LENGTH_LONG).show();
                 }
                 else {
