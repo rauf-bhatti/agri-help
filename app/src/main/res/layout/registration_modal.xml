@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/modal_layout"
+    android:layout_width="400dp"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="135dp"
+        android:adjustViewBounds="false"
+        android:background="#F1E6E6"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        app:srcCompat="@drawable/browser"
+        android:backgroundTint="@color/white"
+        />
+
+
+    <TextView
+        android:id="@+id/modal_title"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:text="Register"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:textStyle="italic"
+        android:textColor="@color/green"
+        />
+    <EditText
+        android:id="@+id/modal_name"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"
+
+        />
+
+    <EditText
+        android:id="@+id/modal_email"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/modal_password"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/modal_register_button"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:backgroundTint="@color/green"
+        />
+
+
+</LinearLayout>
