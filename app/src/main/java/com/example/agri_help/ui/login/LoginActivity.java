@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.agri_help.R;
 import com.example.agri_help.controllers.LoginController;
-import com.example.agri_help.models.SignedInUser;
+import com.example.agri_help.models.RuntimeInfo;
 import com.example.agri_help.ui.plantation_management.PlantationManagement;
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //currently initial..just redirect.
                 if (LoginController.CheckCredentials(emailField.getText().toString(), passwordField.getText().toString())){
-                    SignedInUser.username = emailField.getText().toString();
+                    RuntimeInfo.username = emailField.getText().toString();
                     startActivity(new Intent(v.getContext(), PlantationManagement.class));
                 } else {
                     TextView feedback = (TextView) findViewById(R.id.loginFeedback);
