@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         FloatingActionButton fab = binding.fbaAddImageForDetection;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
