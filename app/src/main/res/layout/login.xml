@@ -150,21 +150,9 @@
         android:layout_height="41dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="553dp"
-        android:layout_marginEnd="87dp"
+        android:layout_marginTop="552dp"
+        android:layout_marginEnd="86dp"
         android:onClick="showRegistrationModal"
-        android:text="Not registered? Register"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="278dp"
-        android:layout_marginTop="554dp"
-        android:layout_marginEnd="52dp"
-        android:onClick="showRegistrationModal"
-        android:text="now."
+        android:text="Not registered?\n Register now."
         android:textAlignment="center" />
 </RelativeLayout>
