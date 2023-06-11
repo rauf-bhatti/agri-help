@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +88,54 @@ public class CloudDAL {
         return insertQuery;
     }
 
+    private StringBuilder parseContentValuesForUpdate(String tableName, String keyField, Object key, ContentValues contentValues) {
+        List<String> keys = new ArrayList<>();
+        List<Object> objects = new ArrayList<>();
+
+        Iterator iterator = contentValues.valueSet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry mapEntry = (Map.Entry)iterator.next();
+            keys.add(mapEntry.getKey().toString());
+            objects.add(mapEntry.getValue());
+        }
+
+        //Build the first part of the query here. Involving the table name and the associated keys.
+        StringBuilder updateQuery = new StringBuilder(String.format("UPDATE %s SET ", tableName));
+
+        for (int i = 0; i < keys.size(); i++) {
+            if (i + 1 >= keys.size()) {
+                updateQuery.append(String.format("%s = '%s' WHERE %s = '%s'", keys.get(i), objects.get(i), keyField, key));
+                continue;
+            }
+            updateQuery.append(String.format("%s = '%s',", keys.get(i), objects.get(i)));
+        }
+
+        Log.e("UPDATE_DAL", updateQuery.toString());
+        return updateQuery;
+    }
+
+    public boolean update (String tableName, String keyField, Object key, ContentValues contentValues) {
+        try {
+            establishConnection();
+
+            Statement statement = connection.createStatement();
+            int result = statement.executeUpdate(parseContentValuesForUpdate(tableName, keyField, key, contentValues).toString());
+
+            if (result >= 1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            Log.e("CLOUD_DAL", e.getMessage());
+            return false;
+        }
+    }
+
     public boolean insert (ContentValues contentValues, String tableName) {
         StringBuilder queryToRun = parseContentValuesForInsert(contentValues, tableName);
 
@@ -126,5 +175,4 @@ public class CloudDAL {
             return null;
         }
     }
-
 }
