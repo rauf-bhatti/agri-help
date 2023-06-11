@@ -14,11 +14,11 @@ import java.util.Map;
 
 public class CloudDAL {
     //This class will be used to persist the connection to an online database server ((PostgreSQL))
-    private final String host = "ec2-34-242-199-141.eu-west-1.compute.amazonaws.com";
-    private final String database = "de873nboe0ijv7";
+    private final String host = "ep-billowing-flower-443662.eu-central-1.aws.neon.tech";
+    private final String database = "neondb";
     private final int port = 5432;
-    private final String user = "ceephnayfbwsxe";
-    private final String pass = "d2b3ecd4dfe30f73c5ecfc5f841235603a0f7cfd43955ca2734ee35a6b15703c";
+    private final String user = "rauf.bhatti.github";
+    private final String pass = "Yfg9eRKvy3SB";
     private String url = "jdbc:postgresql://%s:%d/%s";
 
     private static Connection connection;
@@ -87,7 +87,7 @@ public class CloudDAL {
         return insertQuery;
     }
 
-    public boolean insert(ContentValues contentValues, String tableName) {
+    public boolean insert (ContentValues contentValues, String tableName) {
         StringBuilder queryToRun = parseContentValuesForInsert(contentValues, tableName);
 
         try {
