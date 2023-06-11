@@ -3,6 +3,7 @@ package com.example.agri_help.ui.plantation_management;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -72,6 +73,8 @@ public class AddPlantationActivity extends AppCompatActivity {
 
                 if (!controller.AddPlantation(newPlantation, RuntimeInfo.username)) {
                     Toast.makeText(v.getContext(), "Added!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(v.getContext(),PlantationManagement.class);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(v.getContext(), "Error inserting new plantation!", Toast.LENGTH_LONG).show();

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class Processor {
     public static float getAverageOfJSONArrayByTime(JSONArray timeArr, JSONArray dataArr, String regexSeparator) throws Exception {
-        int firstIndex = -1, lastIndex = -1;
+        int firstIndex = 0, lastIndex = 0;
         boolean flag = false;
         LocalDate dt = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

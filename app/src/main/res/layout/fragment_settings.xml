@@ -8,12 +8,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
     android:layout_height="match_parent">
+
         <androidx.cardview.widget.CardView
-            android:id= "@+id/title"
+            android:id="@+id/title"
             android:layout_width="401dp"
             android:layout_height="150dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="-10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/white"
@@ -22,28 +23,27 @@
             app:cardMaxElevation="12dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/settings_header"
                 android:layout_marginLeft="20dp"
-                />
+                android:src="@drawable/settings_header" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textAlignment="center"
                 android:layout_marginLeft="140dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
+                android:text="Settings\nترتیبات"
+                android:textAlignment="center"
                 android:textSize="25dp"
-                android:textStyle="bold"
-            />
+                android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="401dp"
-            android:layout_height="301dp"
+            android:layout_height="351dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="10dp"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
-                android:text="Enter Tubewell Specification (Output)"
+                android:text="@string/TubewellInput"
                 android:textStyle="bold"
             >
             </TextView>
@@ -69,9 +69,9 @@
                 android:id="@+id/TubeWellValue"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="30dp"
-                android:text="Placeholder"
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="40dp"
+                android:text=""
                 android:textSize="15dp"
                 android:textAlignment="center"
             />
@@ -79,9 +79,9 @@
                 android:id="@+id/Area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_marginLeft="20dp"
-                android:text="Enter Total Area (Hectors)"
+                android:layout_marginTop="90dp"
+                android:layout_marginLeft="40dp"
+                android:text="Enter Total Area (Hectors)\n      کل رقبہ درج کریں (ایکڑ)"
                 android:textStyle="bold"
                 >
             </TextView>
@@ -89,9 +89,9 @@
                 android:id="@+id/TotalArea"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="85dp"
-                android:layout_marginLeft="30dp"
-                android:text="Placeholder"
+                android:layout_marginTop="125dp"
+                android:layout_marginLeft="40dp"
+                android:text=""
                 android:textSize="15dp"
                 android:textAlignment="center"
             />
@@ -99,10 +99,10 @@
                 android:id="@+id/SaveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="85dp"
-                android:layout_marginLeft="250dp"
+                android:layout_marginTop="105dp"
+                android:layout_marginLeft="235dp"
                 android:backgroundTint="@color/green"
-                android:text="Save"
+                android:text="Save\n محفوظ کریں"
 
 
                 />
@@ -111,18 +111,19 @@
                 android:id="@+id/Calibrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
-                android:layout_marginLeft="45dp"
-                android:text="Calibrate Location"
+                android:layout_marginTop="170dp"
+                android:layout_marginLeft="55dp"
+                android:text="Calibrate Location\n  مقام کیلیبریٹ کریں۔"
                 android:textStyle="bold"
                 >
             </TextView>
             <Button
+                android:id="@+id/CalibrateBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="150dp"
-                android:layout_marginLeft="45dp"
-                android:text="Calibrate"
+                android:layout_marginTop="210dp"
+                android:layout_marginLeft="55dp"
+                android:text="Calibrate\nکیلیبریٹ کریں"
                 android:backgroundTint="@color/black"
 
             />
