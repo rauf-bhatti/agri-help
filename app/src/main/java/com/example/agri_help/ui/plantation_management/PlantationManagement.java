@@ -43,13 +43,6 @@ public class PlantationManagement extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-        ArrayList<Plantation> plantations = new ArrayList<>();
-        plantations.add(new Plantation(10, "test", "test"));
-        plantations.add(new Plantation(10, "test", "test"));
-        plantations.add(new Plantation(10, "test", "test"));
-        plantations.add(new Plantation(10, "test", "test"));
-
         mAdapter = new PlantationManagementAdapter();
 
         mRecyclerView.setAdapter(mAdapter);

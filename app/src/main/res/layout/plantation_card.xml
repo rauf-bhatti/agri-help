@@ -89,7 +89,7 @@
                 android:layout_marginStart="135dp"
                 android:layout_marginEnd="113dp"
                 android:layout_marginBottom="11dp"
-                android:progress="60"
+                android:progress="50"
                 android:textAlignment="center" />
 
         </RelativeLayout>

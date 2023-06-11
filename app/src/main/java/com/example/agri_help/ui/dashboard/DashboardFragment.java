@@ -41,9 +41,6 @@ public class DashboardFragment extends Fragment {
 
         recyclerView.setAdapter(mAdapter);
 
-
-        // final TextView textView = binding.textDashboard;
-        // dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

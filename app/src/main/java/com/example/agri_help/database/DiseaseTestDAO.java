@@ -3,6 +3,7 @@ package com.example.agri_help.database;
 import android.content.ContentValues;
 
 import com.example.agri_help.models.DiseaseTest;
+import com.example.agri_help.models.Mitigation;
 import com.example.agri_help.models.Plantation;
 
 import java.sql.ResultSet;
@@ -16,7 +17,7 @@ public class DiseaseTestDAO {
         contentValues.put("diseasetest_result", record.getResult());
         contentValues.put("p_id", record.getPlantationID());
 
-        return mCloudDAL.insert(contentValues, "DiseaseTest");
+        return mCloudDAL.insert(contentValues, "diseasetest");
     }
 
     public ArrayList<DiseaseTest> getDiseaseTestRecord (String plantation_id) {
@@ -38,5 +39,26 @@ public class DiseaseTestDAO {
         }
 
         return diseaseTestHistory;
+    }
+
+    public ArrayList<Mitigation> GetDiseaseMitigation (String disease) {
+        ArrayList<Mitigation> diseaseMitigations = new ArrayList<>();
+
+        try {
+            ResultSet resultSet = mCloudDAL.get("SELECT m.id, m.english_techniques, m.urdu_techniques FROM diseases d JOIN disease_mitigations dm ON d.id = dm.disease_id JOIN mitigations m ON dm.mitigation_id = m.id WHERE d.disease = '" + disease + "';");
+
+            if (resultSet != null) {
+                while (resultSet.next()) {
+                    diseaseMitigations.add(new Mitigation(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3)));
+                }
+
+                return diseaseMitigations;
+            }
+        }
+        catch (Exception exception) {
+            return null;
+        }
+
+        return diseaseMitigations;
     }
 }

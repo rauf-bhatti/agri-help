@@ -11,44 +11,99 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/history_card"
         style="@style/MyCardView"
-        android:layout_height="120dp"
+        android:layout_height="400dp"
         android:layout_width="400dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
-        app:cardCornerRadius="50dp"
+        app:cardCornerRadius="20dp"
         android:clickable="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/mainImg"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/disease_1"
-                app:shapeAppearanceOverlay="@style/circleImageView"
-                app:strokeColor="@android:color/darker_gray"
-                app:strokeWidth="1dp" />
-
             <TextView
                 android:id="@+id/txt_detectionTag"
+                android:layout_width="330dp"
+                android:layout_height="294dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="67dp"
+                android:text="Disease:"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_severityTag"
+                android:layout_width="329dp"
+                android:layout_height="288dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="63dp"
+                android:layout_marginBottom="49dp"
+                android:text="Suggested Product: "
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="131dp"
-                android:layout_marginTop="47dp"
-                android:layout_marginBottom="54dp"
-                android:text="Detection Result: "
-                android:textColor="@color/teal_200"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="91dp"
+                android:text="Detection Information"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="115dp"
+                android:layout_marginBottom="-14dp"
+                android:text="Mitigation Suggestions"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtEng"
+                android:layout_width="wrap_content"
+                android:layout_height="143dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="244dp"
+                android:layout_marginBottom="13dp"
+                android:text="English"/>
+
+            <TextView
+                android:id="@+id/txtUrdu"
+                android:layout_width="wrap_content"
+                android:layout_height="102dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="131dp"
+                android:layout_marginBottom="167dp"
+                android:text="Urdu"
+                android:textColor="@color/black" />
+
 
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
