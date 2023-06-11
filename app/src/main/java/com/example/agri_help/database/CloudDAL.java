@@ -9,16 +9,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class CloudDAL {
     //This class will be used to persist the connection to an online database server ((PostgreSQL))
-    private final String host = "ec2-34-242-199-141.eu-west-1.compute.amazonaws.com";
-    private final String database = "de873nboe0ijv7";
+    private final String host = "ep-billowing-flower-443662.eu-central-1.aws.neon.tech";
+    private final String database = "neondb";
     private final int port = 5432;
-    private final String user = "ceephnayfbwsxe";
-    private final String pass = "d2b3ecd4dfe30f73c5ecfc5f841235603a0f7cfd43955ca2734ee35a6b15703c";
+    private final String user = "rauf.bhatti.github";
+    private final String pass = "Yfg9eRKvy3SB";
     private String url = "jdbc:postgresql://%s:%d/%s";
 
     private static Connection connection;
@@ -87,7 +88,55 @@ public class CloudDAL {
         return insertQuery;
     }
 
-    public boolean insert(ContentValues contentValues, String tableName) {
+    private StringBuilder parseContentValuesForUpdate(String tableName, String keyField, Object key, ContentValues contentValues) {
+        List<String> keys = new ArrayList<>();
+        List<Object> objects = new ArrayList<>();
+
+        Iterator iterator = contentValues.valueSet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry mapEntry = (Map.Entry)iterator.next();
+            keys.add(mapEntry.getKey().toString());
+            objects.add(mapEntry.getValue());
+        }
+
+        //Build the first part of the query here. Involving the table name and the associated keys.
+        StringBuilder updateQuery = new StringBuilder(String.format("UPDATE %s SET ", tableName));
+
+        for (int i = 0; i < keys.size(); i++) {
+            if (i + 1 >= keys.size()) {
+                updateQuery.append(String.format("%s = '%s' WHERE %s = '%s'", keys.get(i), objects.get(i), keyField, key));
+                continue;
+            }
+            updateQuery.append(String.format("%s = '%s',", keys.get(i), objects.get(i)));
+        }
+
+        Log.e("UPDATE_DAL", updateQuery.toString());
+        return updateQuery;
+    }
+
+    public boolean update (String tableName, String keyField, Object key, ContentValues contentValues) {
+        try {
+            establishConnection();
+
+            Statement statement = connection.createStatement();
+            int result = statement.executeUpdate(parseContentValuesForUpdate(tableName, keyField, key, contentValues).toString());
+
+            if (result >= 1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            Log.e("CLOUD_DAL", e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean insert (ContentValues contentValues, String tableName) {
         StringBuilder queryToRun = parseContentValuesForInsert(contentValues, tableName);
 
         try {
@@ -126,5 +175,4 @@ public class CloudDAL {
             return null;
         }
     }
-
 }
