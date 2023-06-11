@@ -20,4 +20,5 @@
     <string name="get_started">Get Started   >></string>
     <string name="logo_description">Redefining agriculture..</string>
     <string name="Weather">Weather</string>
+    <string name="Settings">Weather</string>
 </resources>
