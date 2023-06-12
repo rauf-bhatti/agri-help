@@ -45,11 +45,11 @@ public class DiseaseTestDAO {
         ArrayList<Mitigation> diseaseMitigations = new ArrayList<>();
 
         try {
-            ResultSet resultSet = mCloudDAL.get("SELECT m.id, m.english_techniques, m.urdu_techniques FROM diseases d JOIN disease_mitigations dm ON d.id = dm.disease_id JOIN mitigations m ON dm.mitigation_id = m.id WHERE d.disease = '" + disease + "';");
+            ResultSet resultSet = mCloudDAL.get("SELECT m.* FROM diseases d JOIN disease_mitigations dm ON d.id = dm.disease_id JOIN mitigations m ON dm.mitigation_id = m.id WHERE d.disease = '" + disease + "';");
 
             if (resultSet != null) {
                 while (resultSet.next()) {
-                    diseaseMitigations.add(new Mitigation(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3)));
+                    diseaseMitigations.add(new Mitigation(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getString(5)));
                 }
 
                 return diseaseMitigations;

@@ -37,6 +37,7 @@ public class DiseaseTestAdapter extends RecyclerView.Adapter<DiseaseTestAdapter.
         TextView detectionTag;
         TextView engText;
         TextView urduText;
+        TextView suggestedProducts;
 
         public DiseaseTestViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -44,45 +45,26 @@ public class DiseaseTestAdapter extends RecyclerView.Adapter<DiseaseTestAdapter.
             detectionTag = itemView.findViewById(R.id.txt_detectionTag);
             engText = itemView.findViewById(R.id.txtEng);
             urduText = itemView.findViewById(R.id.txtUrdu);
+            suggestedProducts = itemView.findViewById(R.id.txt_suggestedProduct);
 
             MaterialCardView cardView = itemView.findViewById(R.id.history_card);
 
             cardView.setOnClickListener(new View.OnClickListener() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void onClick(View view) {
-//                    DiseaseTest ticketInstance = DiseaseTestAdapter.diseaseTestHistory.get(getAdapterPosition());
-//
-//
-//                    View popupView = LayoutInflater.from(itemView.getContext()).inflate(R.layout.popup_layout, null);
-//                    PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-//                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-//                    TextView popupTitle = popupView.findViewById(R.id.mitigationDescription);
-//                    Button popupButton = popupView.findViewById(R.id.popup_button);
-//
-//                    ArrayList<Mitigation> mitigations = new ArrayList<>();
-//
-//                    if (ticketInstance.getResult().contains("bacterial")) {
-//                        mitigations = diseaseTestDAO.GetDiseaseMitigation("bacterial_blight");
-//                        engText.setText(mitigations.get(0).GetEngMitigation());
-//                    }
-//                    else if (ticketInstance.getResult().contains("wilt")) {
-//                        mitigations = diseaseTestDAO.GetDiseaseMitigation("fussarium_wilt");
-//                        engText.setText(mitigations.get(0).GetEngMitigation());
-//
-//                    }
-//                    else if (ticketInstance.getResult().contains("curl")) {
-//                        mitigations = diseaseTestDAO.GetDiseaseMitigation("curl_virus");
-//                        engText.setText(mitigations.get(0).GetEngMitigation());
-//                    }
-//
-//                    popupButton.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            popupWindow.dismiss();
-//                        }
-//                    });
-//
-//                    popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+                    DiseaseTest ticketInstance = DiseaseTestAdapter.diseaseTestHistory.get(getAdapterPosition());
+
+                    View popupView = LayoutInflater.from(itemView.getContext()).inflate(R.layout.popup_layout, null);
+                    PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                    TextView popupTitle = popupView.findViewById(R.id.mitigationDescription);
+
+                    ArrayList<Mitigation> mitigations = diseaseTestDAO.GetDiseaseMitigation(ticketInstance.getResult());
+
+                    popupTitle.setText("Severity Index: \n" + mitigations.get(0).GetSeverityIndex());
+
+                    popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
                 }
             });
         }
@@ -109,7 +91,7 @@ public class DiseaseTestAdapter extends RecyclerView.Adapter<DiseaseTestAdapter.
         mitigations = diseaseTestDAO.GetDiseaseMitigation(obj.getResult());
 
         holder.detectionTag.setText("Disease: " + obj.getResult());
-
+        holder.suggestedProducts.setText("Suggested Products: " + mitigations.get(0).GetSuggestedProducts());
         if (mitigations.size() > 0) {
             holder.engText.setText("English:\n" + mitigations.get(0).GetEngMitigation());
             holder.urduText.setText("Urdu:\n" + mitigations.get(0).GetUrduMitigation());
