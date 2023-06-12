@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,7 +18,9 @@ import com.example.agri_help.models.Plantation;
 import com.example.agri_help.models.RuntimeInfo;
 import com.google.android.material.card.MaterialCardView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PlantationManagementAdapter extends RecyclerView.Adapter<PlantationManagementAdapter.PlantationViewHolder> {
     public static ArrayList<Plantation> plantations;
@@ -41,6 +44,7 @@ public class PlantationManagementAdapter extends RecyclerView.Adapter<Plantation
 
         public TextView status_tag;
         public TextView sown_date;
+        public ProgressBar progressBar;
 
 
         public PlantationViewHolder(View v){
@@ -60,6 +64,7 @@ public class PlantationManagementAdapter extends RecyclerView.Adapter<Plantation
             });*/
             sown_date = v.findViewById(R.id.txt_sownDate);
             status_tag = v.findViewById(R.id.txt_statusTag);
+            progressBar = v.findViewById(R.id.progressBar);
 
             MaterialCardView cardView = itemView.findViewById(R.id.plantation_card);
 
@@ -85,7 +90,16 @@ public class PlantationManagementAdapter extends RecyclerView.Adapter<Plantation
     public void onBindViewHolder(PlantationManagementAdapter.PlantationViewHolder holder, int position) {
         Plantation obj = plantations.get(position);
         holder.sown_date.setText(obj.GetSownDate());
-        holder.status_tag.setText("HEALTHY");
+        holder.status_tag.setText(obj.GetPlantationStatus());
+
+        String sownDate = obj.GetSownDate();
+        String[] tokens = sownDate.split("/");
+
+        int daysElapsed = Math.abs(Integer.parseInt(tokens[0]) - LocalDate.now().getMonthValue()) * 30;
+        float progressIntervals = 160.0f / 100.0f;
+        float progress = (float) daysElapsed / progressIntervals;
+
+        holder.progressBar.setProgress((int) progress);
     }
 
     @Override
