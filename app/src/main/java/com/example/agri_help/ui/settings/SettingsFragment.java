@@ -49,6 +49,16 @@ public class SettingsFragment extends Fragment {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    if (metric.getArea() != Float.parseFloat(area.getText().toString()) || metric.getPumpSpec() != Float.parseFloat(pumpSpec.getText().toString())){
+                        System.out.println(area.getText().toString());
+                        metric.setArea(Float.parseFloat(area.getText().toString()));
+                        metric.setPumpSpec(Float.parseFloat(pumpSpec.getText().toString()));
+                        pmController.UpdateMetricForPlantation(metric);
+                    }
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
         return root;

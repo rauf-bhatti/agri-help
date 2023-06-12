@@ -19,4 +19,13 @@ public class PlantationMetricController {
             return null;
         }
     }
+    public boolean UpdateMetricForPlantation (PlantationMetrics p_metric){
+        try {
+            return plantationMetricsDAO.UpdatePlantationMetric(p_metric);
+        } catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return false;
+    }
 }
+

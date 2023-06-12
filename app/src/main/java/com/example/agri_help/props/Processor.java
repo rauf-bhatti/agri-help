@@ -30,4 +30,28 @@ public class Processor {
         }
         return sum/((lastIndex-firstIndex)+1);
     }
+    public static float GetTimeNeededForWaterPump (float soilMoistureCurrent, float landSize, float flowRate, JSONArray dailyRainPredicted, JSONArray dailyShowersPredicted) throws JSONException {
+        // ET rate - Water loss rate (in mm per hour)
+        float rainSum = 0;
+        float idealSM = 40;
+        double landSizeSqM = landSize * 4046.86;
+        for (int i=0; i<dailyRainPredicted.length(); i++){
+            rainSum += Float.parseFloat(String.valueOf(dailyRainPredicted.get(i)));
+        }
+        for (int i=0; i<dailyShowersPredicted.length(); i++){
+            rainSum += Float.parseFloat(String.valueOf(dailyShowersPredicted.get(i)));
+        }
+        double volume = landSizeSqM * ((idealSM - soilMoistureCurrent)-rainSum) * 0.0001;
+        if (volume < 0 ) {volume *= -1;}
+        double litersByGalon = 3.78541;
+        double cubicMbyLiters = 0.001;
+        double outputRate = litersByGalon * cubicMbyLiters * flowRate;
+        System.out.printf("OUTPUT RATE" + outputRate + "\n");
+
+        //5 gallons/hour * 3.78541 liters/gallon * 0.001 cubic meters/liter = 0.01892705 cubic meters/hour
+
+        System.out.println("VOLUME: " + volume + "\n");
+        double time = volume/outputRate;
+        return Float.parseFloat(String.valueOf(Math.floor(time)));
+    }
 }

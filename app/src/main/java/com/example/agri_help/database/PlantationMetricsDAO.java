@@ -60,7 +60,7 @@ public class PlantationMetricsDAO implements IPlantationMetricsDAO {
         cv.put("avg_rainfall_week", p_Metrics.getAvgRainfallInWeek());
         cv.put("avg_soil_moisture", p_Metrics.getCurrentSoilMoisture());
         cv.put("optimum_soil_moisture", p_Metrics.getOptimumSoilMoisture());
-        cv.put("area", p_Metrics.getOptimumSoilMoisture());
+        cv.put("area", p_Metrics.getArea());
         cv.put("pump_spec", p_Metrics.getPumpSpec());
         cv.put("longitude", p_Metrics.getLongitude());
         cv.put("latitude", p_Metrics.getLatitude());

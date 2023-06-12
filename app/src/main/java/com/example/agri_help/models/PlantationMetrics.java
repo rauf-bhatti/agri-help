@@ -62,7 +62,7 @@ public class PlantationMetrics {
     }
 
     public void setArea(float area) {
-        Area = area;
+        this.Area = area;
     }
 
     public void setPlantationID(String plantationID) {
