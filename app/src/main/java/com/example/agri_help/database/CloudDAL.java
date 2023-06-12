@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.os.StrictMode;
 import android.util.Log;
 
+import com.example.agri_help.models.Plantation;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -136,9 +138,23 @@ public class CloudDAL {
         }
     }
 
+    public boolean insertAfterPlantation (String area, String p_id, String tablename){
+        ContentValues cv = new ContentValues();
+        cv.put("area", Float.parseFloat(area));
+        cv.put("plantation_id", p_id);
+        cv.put("avg_weather_week",0.0f);
+        cv.put("avg_rainfall_week", 0.0f);
+        cv.put("avg_soil_moisture", 0.0f);
+        cv.put("optimum_soil_moisture", 0.0f);
+        cv.put("pump_spec", 0.0f);
+        cv.put("longitude", 0.0f);
+        cv.put("latitude", 0.0f);
+
+        return insert(cv, tablename);
+    }
+
     public boolean insert (ContentValues contentValues, String tableName) {
         StringBuilder queryToRun = parseContentValuesForInsert(contentValues, tableName);
-
         try {
             establishConnection();
 
