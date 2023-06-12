@@ -49,6 +49,7 @@ public class PlantationDAO implements IPlantationDAO{
         contentValues.put("sown_date", plantation.GetSownDate());
         contentValues.put("plantation_status", plantation.GetPlantationStatus());
 
-        return mCloudDAL.insert(contentValues, "Plantation");
+        mCloudDAL.insert(contentValues, "Plantation");
+        return mCloudDAL.insertAfterPlantation(String.valueOf(plantation.GetArea()),plantation.GetPlantationID(), "plantation_metrics");
     }
 }
